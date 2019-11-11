@@ -16,6 +16,7 @@ class OpenGLCubeMesh
 
 
         OpenGLCubeMesh(int, int, int, float);
+        void saveToFile();
         void printVertices();
 		void normalizeVertices();
 		float* getVertices();

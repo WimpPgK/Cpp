@@ -6,6 +6,9 @@ class FileOperator
 {
     public:
         FileOperator();
+        void saveToFile(float*, int);
+        void kokos();
+
         virtual ~FileOperator();
 
     protected:

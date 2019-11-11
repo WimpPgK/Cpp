@@ -71,10 +71,37 @@ void OpenGLCubeMesh::printVertices()
 
 void OpenGLCubeMesh::normalizeVertices()
 {
+    float max = 0;
+	int i;
+	for (i=0; i < x * y * z * 180; i++)
+	{
+		if (vertices[i] > max)
+		{
+			max = vertices[i];
+		}
+	}
 
+	max = max / 2;
+	for (i = 0; i < x * y * z * 180; i++)
+	{
+		if ((i + 1) % 3 == 0)
+		{
+			vertices[i] = 1.0;
+		}
+		else
+		{
+			vertices[i] = vertices[i] / max - 1.0;
+		}
 
+	}
 }
 
+void OpenGLCubeMesh::saveToFile()
+{
+    FileOperator f1;
+    int n = x*y*z*180;
+    f1.saveToFile(vertices,n);
+}
 
 
 float* OpenGLCubeMesh::getVertices()
