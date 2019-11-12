@@ -12,7 +12,7 @@ OpenGLCubeMesh::OpenGLCubeMesh(int x, int y, int z, float gap)
 	this->z = z;
 	this->gap = gap;
 
-	std::cout << x <<  "  " << y << "  " << z << std::endl;
+	//std::cout << x <<  "  " << y << "  " << z << std::endl;
 
 	float position_x = 0;
 	float position_y = 0;
@@ -59,7 +59,7 @@ void OpenGLCubeMesh::printVertices()
     int i;
     for(i = 0 ; i < x*y*z*180 ; i++)
     {
-        std::cout << i << ": " <<vertices[i] << "  ";
+        cout << vertices[i] << "  ";
         if((i+1)%4 == 0)
         {
             std::cout << std::endl;
@@ -82,19 +82,16 @@ void OpenGLCubeMesh::normalizeVertices()
 	}
 
 	max = max / 2;
-	for (i = 0; i < x * y * z * 180; i++)
+	for (i = 0; i < x * y * z * 180; i+=5)
 	{
-		if ((i + 1) % 3 == 0)
-		{
-			vertices[i] = 1.0;
-		}
-		else
-		{
-			vertices[i] = vertices[i] / max - 1.0;
-		}
-
+		
+		vertices[i] = vertices[i] / max - 1.0;
+		vertices[i+1] = vertices[i+1] / max - 1.0;
+		vertices[i+2] = vertices[i+2] / max - 1.0;
+		
 	}
 }
+
 
 void OpenGLCubeMesh::saveToFile()
 {
@@ -106,8 +103,8 @@ void OpenGLCubeMesh::saveToFile()
 
 float* OpenGLCubeMesh::getVertices()
 {
-    float* pom;
-    return pom;
+
+    return vertices;
 
 }
 

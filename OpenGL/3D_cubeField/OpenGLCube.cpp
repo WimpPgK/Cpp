@@ -63,12 +63,13 @@ OpenGLCube::OpenGLCube()
 void OpenGLCube::setPosition(float x, float y, float z)
 {
     int i;
-	for(i = 0 ; i < 180 ; i+= 4)
+	for(i = 0 ; i < 180 ; i+= 5)
     {
        vertices[i] +=  x;
        vertices[i+1] +=  y;
        vertices[i+2] +=  z;
-       vertices[i+3] +=  1;
+       vertices[i+3] +=1;
+	   vertices[i+4] += 1;
     }
 }
 
